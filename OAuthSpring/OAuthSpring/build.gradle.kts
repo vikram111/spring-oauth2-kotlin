@@ -25,6 +25,7 @@ dependencies {
 	implementation("org.webjars:bootstrap:4.3.1")
 	implementation("org.webjars:webjars-locator-core")
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
+	implementation("org.webjars:js-cookie:2.1.0")
 
 }
 
