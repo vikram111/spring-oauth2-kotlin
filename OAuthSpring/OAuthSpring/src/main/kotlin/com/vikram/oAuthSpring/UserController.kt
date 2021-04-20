@@ -2,8 +2,8 @@ package com.vikram.oAuthSpring
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.security.oauth2.core.user.OAuth2User
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
+import javax.servlet.http.HttpServletRequest
 
 @RestController
 class UserController {
@@ -12,4 +12,10 @@ class UserController {
     fun user(@AuthenticationPrincipal user: OAuth2User): Map<String,Any>{
         return mapOf("name" to user.name)
     }
+
+   @GetMapping("/error")
+   fun onError(request: HttpServletRequest){
+       val attribute: String  = request.session.getAttribute("error.message") as String
+       request.session.removeAttribute("error.message")
+   }
 }
